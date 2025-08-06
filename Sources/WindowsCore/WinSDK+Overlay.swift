@@ -21,6 +21,11 @@ public var BELOW_NORMAL_PRIORITY_CLASS: DWORD {
 }
 
 @_transparent
+public var C3_FULLWIDTH: WORD {
+  WORD(WinSDK.C3_FULLWIDTH)
+}
+
+@_transparent
 public var CONSOLE_TEXTMODE_BUFFER: DWORD {
   DWORD(WinSDK.CONSOLE_TEXTMODE_BUFFER)
 }
@@ -33,6 +38,11 @@ public var CREATE_PROCESS_DEBUG_EVENT: DWORD {
 @_transparent
 public var CREATE_THREAD_DEBUG_EVENT: DWORD {
   DWORD(WinSDK.CREATE_THREAD_DEBUG_EVENT)
+}
+
+@_transparent
+public var CT_CTYPE3: DWORD {
+  DWORD(WinSDK.CT_CTYPE3)
 }
 
 @_transparent
