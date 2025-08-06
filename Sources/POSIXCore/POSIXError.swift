@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 #if !os(Windows)
+import Glibc
 
 public struct POSIXError: Error {
   internal let code: CInt
@@ -14,8 +15,8 @@ public struct POSIXError: Error {
 extension POSIXError: CustomStringConvertible {
   public var description: String {
     return withUnsafeTemporaryAllocation(of: CChar.self, capacity: 256) {
-      guard strerror_r(code, $0.baseAddress, $0.count) == 0,
-          let baseAddress = $0.baseAddress else {
+      guard let baseAddress = $0.baseAddress,
+        strerror_r(code, baseAddress, $0.count) == 0 else {
         return "POSIX Error \(code)"
       }
       return String(cString: baseAddress)

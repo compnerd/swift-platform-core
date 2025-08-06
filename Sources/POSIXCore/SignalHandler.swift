@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 #if !os(Windows)
+import Glibc
 
 private final actor Registry {
   static let shared = Registry()
@@ -152,7 +153,7 @@ private final actor Registry {
       _ = write(Registry.fds[1], &signal, 1)
     }
     #if os(Linux)
-    action.sa_handler = handler
+    action.__sigaction_handler = sigaction.__Unnamed_union___sigaction_handler(sa_handler: handler)
     #else
     action.__sigaction_u.__sa_handler = handler
     #endif
