@@ -7,6 +7,9 @@ let _ = Package(name: "swift-platform-core",
                   .library(name: "WindowsCore", targets: ["WindowsCore"]),
                   .library(name: "POSIXCore", targets: ["POSIXCore"]),
                 ],
+                traits: [
+                  .trait(name: "GNU", description: "GNU C Library")
+                ],
                 targets: [
                   .target(name: "WindowsCore",
                           swiftSettings: [
