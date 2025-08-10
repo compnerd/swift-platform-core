@@ -1,13 +1,7 @@
 // Copyright © 2025 Saleem Abdulrasool <compnerd@compnerd.org>
 // SPDX-License-Identifier: BSD-3-Clause
 
-#if os(macOS) || os(Linux)
-
-#if os(macOS)
-import Darwin
-#elseif os(Linux)
-import Glibc
-#endif
+#if !os(Windows)
 
 public struct POSIXError: Error {
   internal let code: CInt
