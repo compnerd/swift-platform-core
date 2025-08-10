@@ -3,7 +3,8 @@
 
 #if os(macOS)
 
-@_exported import Darwin
+@_exported
+import Darwin
 
 @_transparent
 public var ICANON: tcflag_t {
