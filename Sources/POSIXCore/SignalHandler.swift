@@ -206,10 +206,9 @@ public struct SignalHandler {
   /// If this is the last handler for a signal, the original signal
   /// disposition is restored.
   ///
-  /// - Important: On macOS versions prior to 26, manual removal requires
-  ///   `Task.immediate` availability. The token will trigger a
-  ///   precondition failure if automatic cleanup occurs on unsupported
-  ///   versions.
+  /// - Important: On Swift 6.2+ and macOS 26+, uses `Task.immediate` for
+  ///   immediate cleanup. On older versions, falls back to `Task.detached`
+  ///   with high priority, which may have slight scheduling delays.
   public struct RemovalToken: ~Copyable, Sendable {
     private let termination: @Sendable () async -> Void
 
@@ -218,13 +217,21 @@ public struct SignalHandler {
     }
 
     deinit {
-      guard #available(macOS 26, *) else {
-        preconditionFailure("Task.immediate is not available; cannot remove signal handler")
+#if swift(>=6.2)
+      if #available(macOS 26, *) {
+        Task<Void, Never>.immediate { [termination] in
+          await termination()
+        }
+      } else {
+        Task.detached(priority: .high) { [termination] in
+          await termination()
+        }
       }
-
-      Task<Void, Never>.immediate { [termination] in
+#else
+      Task.detached(priority: .high) { [termination] in
         await termination()
       }
+#endif
     }
 
     /// Explicitly removes the signal handler.
@@ -233,15 +240,25 @@ public struct SignalHandler {
     /// waiting for the token to be deallocated. After calling this method,
     /// the token becomes invalid and should not be used further.
     ///
-    /// - Important: Requires `Task.immediate` availability (macOS 26+).
+    /// - Important: On Swift 6.2+ and macOS 26+, uses `Task.immediate` for
+    ///   immediate execution. On older versions, falls back to
+    ///   `Task.detached` with high priority.
     public consuming func remove() {
-      guard #available(macOS 26, *) else {
-        preconditionFailure("Task.immediate is not available; cannot remove signal handler")
+#if swift(>=6.2)
+      if #available(macOS 26, *) {
+        Task<Void, Never>.immediate { [termination] in
+          await termination()
+        }
+      } else {
+        Task.detached(priority: .high) { [termination] in
+          await termination()
+        }
       }
-
-      Task<Void, Never>.immediate { [termination] in
+#else
+      Task.detached(priority: .high) { [termination] in
         await termination()
       }
+#endif
     }
   }
 
