@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 #if !os(Windows)
+#if canImport(Glibc)
 import Glibc
+#endif
 
 public struct POSIXError: Error {
   internal let code: CInt
