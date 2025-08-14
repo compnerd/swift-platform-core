@@ -24,7 +24,7 @@ private final actor Registry {
 
   private var handlers: [CInt:[ObjectIdentifier:Handler]] = [:]
   private var dispositions: [CInt:sigaction] = [:]
-#if $InlineArray
+#if compiler(>=6.2)
   private nonisolated(unsafe) static var fds = InlineArray<2, CInt>(repeating: -1)
 #else
   private nonisolated(unsafe) static var fds = Array<CInt>(repeating: -1, count: 2)
