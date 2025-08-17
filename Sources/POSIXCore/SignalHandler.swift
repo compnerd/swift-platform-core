@@ -63,9 +63,11 @@ private final actor Registry {
         guard let self else { return }
 
         let count = read(Registry.fds[0], &buffer, buffer.count)
+        let errno = errno
         guard count > 0 else {
           if errno == EINTR { continue }
-          fatalError("read failure from signal pipe: \(POSIXError())")
+          if errno == 0 { return }
+          fatalError("read failure from signal pipe: \(POSIXError(errno))")
         }
 
         for signal in buffer[..<count].lazy.map(CInt.init) {
