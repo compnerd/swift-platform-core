@@ -176,8 +176,28 @@ public var IDLE_PRIORITY_CLASS: DWORD {
 }
 
 @_transparent
+public var KEY_ENUMERATE_SUB_KEYS: DWORD {
+  DWORD(WinSDK.KEY_ENUMERATE_SUB_KEYS)
+}
+
+@_transparent
 public var KEY_EVENT: WORD {
   WORD(WinSDK.KEY_EVENT)
+}
+
+@_transparent
+public var KEY_NOTIFY: DWORD {
+  DWORD(WinSDK.KEY_NOTIFY)
+}
+
+@_transparent
+public var KEY_QUERY_VALUE: DWORD {
+  DWORD(WinSDK.KEY_QUERY_VALUE)
+}
+
+@_transparent
+public var KEY_READ: DWORD {
+  (STANDARD_RIGHTS_READ | KEY_QUERY_VALUE | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY) & ~SYNCHRONIZE
 }
 
 @_transparent
@@ -288,6 +308,11 @@ public var STANDARD_RIGHTS_READ: DWORD {
 @_transparent
 public var SUBLANG_DEFAULT: WORD {
   WORD(WinSDK.SUBLANG_DEFAULT)
+}
+
+@_transparent
+public var SYNCHRONIZE: DWORD {
+  DWORD(WinSDK.SYNCHRONIZE)
 }
 
 @_transparent
