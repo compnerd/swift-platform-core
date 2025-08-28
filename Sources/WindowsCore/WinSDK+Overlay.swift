@@ -31,13 +31,73 @@ public var CONSOLE_TEXTMODE_BUFFER: DWORD {
 }
 
 @_transparent
+public var CREATE_BREAKAWAY_FROM_JOB: DWORD {
+  DWORD(WinSDK.CREATE_BREAKAWAY_FROM_JOB)
+}
+
+@_transparent
+public var CREATE_DEFAULT_ERROR_MODE: DWORD {
+  DWORD(WinSDK.CREATE_DEFAULT_ERROR_MODE)
+}
+
+@_transparent
+public var CREATE_NEW_CONSOLE: DWORD {
+  DWORD(WinSDK.CREATE_NEW_CONSOLE)
+}
+
+@_transparent
+public var CREATE_NEW_PROCESS_GROUP: DWORD {
+  DWORD(WinSDK.CREATE_NEW_PROCESS_GROUP)
+}
+
+@_transparent
+public var CREATE_NO_WINDOW: DWORD {
+  DWORD(WinSDK.CREATE_NO_WINDOW)
+}
+
+@_transparent
+public var CREATE_PRESERVE_CODE_AUTHZ_LEVEL: DWORD {
+  DWORD(WinSDK.CREATE_PRESERVE_CODE_AUTHZ_LEVEL)
+}
+
+@_transparent
 public var CREATE_PROCESS_DEBUG_EVENT: DWORD {
   DWORD(WinSDK.CREATE_PROCESS_DEBUG_EVENT)
 }
 
 @_transparent
+public var CREATE_PROTECTED_PROCESS: DWORD {
+  DWORD(WinSDK.CREATE_PROTECTED_PROCESS)
+}
+
+@_transparent
+public var CREATE_SECURE_PROCESS: DWORD {
+  DWORD(WinSDK.CREATE_SECURE_PROCESS)
+}
+
+@_transparent
+public var CREATE_SEPARATE_WOW_VDM: DWORD {
+  DWORD(WinSDK.CREATE_SEPARATE_WOW_VDM)
+}
+
+@_transparent
+public var CREATE_SHARED_WOW_VDM: DWORD {
+  DWORD(WinSDK.CREATE_SHARED_WOW_VDM)
+}
+
+@_transparent
+public var CREATE_SUSPENDED: DWORD {
+  DWORD(WinSDK.CREATE_SUSPENDED)
+}
+
+@_transparent
 public var CREATE_THREAD_DEBUG_EVENT: DWORD {
   DWORD(WinSDK.CREATE_THREAD_DEBUG_EVENT)
+}
+
+@_transparent
+public var CREATE_UNICODE_ENVIRONMENT: DWORD {
+  DWORD(WinSDK.CREATE_UNICODE_ENVIRONMENT)
 }
 
 @_transparent
@@ -51,8 +111,18 @@ public var DEBUG_ONLY_THIS_PROCESS: DWORD {
 }
 
 @_transparent
+public var DEBUG_PROCESS: DWORD {
+  DWORD(WinSDK.DEBUG_PROCESS)
+}
+
+@_transparent
 public var DELETE: DWORD {
   DWORD(WinSDK.DELETE)
+}
+
+@_transparent
+public var DETACHED_PROCESS: DWORD {
+  DWORD(WinSDK.DETACHED_PROCESS)
 }
 
 @_transparent
@@ -118,6 +188,11 @@ public var EXIT_PROCESS_DEBUG_EVENT: DWORD {
 @_transparent
 public var EXIT_THREAD_DEBUG_EVENT: DWORD {
   DWORD(WinSDK.EXIT_THREAD_DEBUG_EVENT)
+}
+
+@_transparent
+public var EXTENDED_STARTUPINFO_PRESENT: DWORD {
+  DWORD(WinSDK.EXTENDED_STARTUPINFO_PRESENT)
 }
 
 @_transparent
@@ -188,6 +263,11 @@ public var HIGH_PRIORITY_CLASS: DWORD {
 @_transparent
 public var IDLE_PRIORITY_CLASS: DWORD {
   DWORD(WinSDK.IDLE_PRIORITY_CLASS)
+}
+
+@_transparent
+public var INHERIT_PARENT_AFFINITY: DWORD {
+  DWORD(WinSDK.INHERIT_PARENT_AFFINITY)
 }
 
 @_transparent
