@@ -16,6 +16,8 @@ let _ = Package(name: "swift-platform-core",
                 targets: [
                   .target(name: "WindowsCore",
                           swiftSettings: [
+                            .enableExperimentalFeature("AccessLevelOnImport"),
+                            .enableExperimentalFeature("ImportMacroAliases"),
                             .unsafeFlags(["-static"]),
                           ]),
                   .target(name: "POSIXCore"),

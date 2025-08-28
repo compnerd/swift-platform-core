@@ -51,6 +51,11 @@ public var DEBUG_ONLY_THIS_PROCESS: DWORD {
 }
 
 @_transparent
+public var DELETE: DWORD {
+  DWORD(WinSDK.DELETE)
+}
+
+@_transparent
 public var DISABLE_NEWLINE_AUTO_RETURN: DWORD {
   DWORD(WinSDK.DISABLE_NEWLINE_AUTO_RETURN)
 }
@@ -88,6 +93,16 @@ public var ERROR_INVALID_FUNCTION: DWORD {
 @_transparent
 public var ERROR_SUCCESS: DWORD {
   DWORD(WinSDK.ERROR_SUCCESS)
+}
+
+@_transparent
+public var EVENT_ALL_ACCESS: DWORD {
+  STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | 0x3
+}
+
+@_transparent
+public var EVENT_MODIFY_STATE: DWORD {
+  DWORD(WinSDK.EVENT_MODIFY_STATE)
 }
 
 @_transparent
@@ -241,6 +256,26 @@ public var MOUSE_WHEELED: DWORD {
 }
 
 @_transparent
+public var MUTANT_ALL_ACCESS: DWORD {
+  STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | MUTANT_QUERY_STATE
+}
+
+@_transparent
+public var MUTANT_QUERY_STATE: DWORD {
+  DWORD(WinSDK.MUTANT_QUERY_STATE)
+}
+
+@_transparent
+public var MUTEX_ALL_ACCESS: DWORD {
+  MUTANT_ALL_ACCESS
+}
+
+@_transparent
+public var MUTEX_MODIFY_STATE: DWORD {
+  DWORD(WinSDK.MUTEX_MODIFY_STATE)
+}
+
+@_transparent
 public var NORMAL_PRIORITY_CLASS: DWORD {
   DWORD(WinSDK.NORMAL_PRIORITY_CLASS)
 }
@@ -263,6 +298,11 @@ public var PROCESS_QUERY_LIMITED_INFORMATION: DWORD {
 @_transparent
 public var PROCESS_VM_READ: DWORD {
   DWORD(WinSDK.PROCESS_VM_READ)
+}
+
+@_transparent
+public var READ_CONTROL: DWORD {
+  DWORD(WinSDK.READ_CONTROL)
 }
 
 @_transparent
@@ -303,6 +343,11 @@ public var SHIFT_PRESSED: DWORD {
 @_transparent
 public var STANDARD_RIGHTS_READ: DWORD {
   DWORD(WinSDK.STANDARD_RIGHTS_READ)
+}
+
+@_transparent
+public var STANDARD_RIGHTS_REQUIRED: DWORD {
+  DWORD(WinSDK.STANDARD_RIGHTS_REQUIRED)
 }
 
 @_transparent
@@ -358,6 +403,51 @@ public var UNLOAD_DLL_DEBUG_EVENT: DWORD {
 @_transparent
 public var WINDOW_BUFFER_SIZE_EVENT: WORD {
   WORD(WinSDK.WINDOW_BUFFER_SIZE_EVENT)
+}
+
+@_transparent
+public var WRITE_DAC: DWORD {
+  DWORD(WinSDK.WRITE_DAC)
+}
+
+@_transparent
+public var WRITE_OWNER: DWORD {
+  DWORD(WinSDK.WRITE_OWNER)
+}
+
+@_transparent
+public var WT_EXECUTEDEFAULT: DWORD {
+  DWORD(WinSDK.WT_EXECUTEDEFAULT)
+}
+
+@_transparent
+public var WT_EXECUTEINTIMERTHREAD: DWORD {
+  DWORD(WinSDK.WT_EXECUTEINTIMERTHREAD)
+}
+
+@_transparent
+public var WT_EXECUTEINIOTHREAD: DWORD {
+  DWORD(WinSDK.WT_EXECUTEINIOTHREAD)
+}
+
+@_transparent
+public var WT_EXECUTEINPERSISTENTTHREAD: DWORD {
+  DWORD(WinSDK.WT_EXECUTEINPERSISTENTTHREAD)
+}
+
+@_transparent
+public var WT_EXECUTELONGFUNCTION: DWORD {
+  DWORD(WinSDK.WT_EXECUTELONGFUNCTION)
+}
+
+@_transparent
+public var WT_EXECUTEONLYONCE: DWORD {
+  DWORD(WinSDK.WT_EXECUTEONLYONCE)
+}
+
+@_transparent
+public var WT_TRANSFER_IMPERSONATION: DWORD {
+  DWORD(WinSDK.WT_TRANSFER_IMPERSONATION)
 }
 
 @_transparent
