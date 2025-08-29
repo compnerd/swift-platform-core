@@ -4,10 +4,10 @@
 #if os(Windows)
 
 import WinSDK
-import Foundation
+import FoundationEssentials
 
 internal var hNTDLL: HMODULE? {
-  "ntdll.dll".withCString(encodedAs: UTF16.self, GetModuleHandleW)
+  "ntdll.dll".withUTF16CString(GetModuleHandleW)
 }
 
 public typealias NtQueryInformationProcessTy =
