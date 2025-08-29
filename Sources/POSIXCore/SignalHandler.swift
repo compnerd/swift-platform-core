@@ -3,6 +3,10 @@
 
 #if !os(Windows)
 
+#if canImport(Glibc)
+import Glibc
+#endif
+
 private final actor Registry {
   static let shared = Registry()
 
@@ -20,7 +24,7 @@ private final actor Registry {
 
   private var handlers: [CInt:[ObjectIdentifier:Handler]] = [:]
   private var dispositions: [CInt:sigaction] = [:]
-#if $InlineArray
+#if compiler(>=6.2)
   private nonisolated(unsafe) static var fds = InlineArray<2, CInt>(repeating: -1)
 #else
   private nonisolated(unsafe) static var fds = Array<CInt>(repeating: -1, count: 2)
@@ -153,8 +157,8 @@ private final actor Registry {
       var signal = UInt8(signal)
       _ = write(Registry.fds[1], &signal, 1)
     }
-    #if os(Linux)
-    action.sa_handler = handler
+    #if canImport(Glibc)
+    action.__sigaction_handler = sigaction.__Unnamed_union___sigaction_handler(sa_handler: handler)
     #else
     action.__sigaction_u.__sa_handler = handler
     #endif
