@@ -5,11 +5,7 @@
 
 public enum SystemInfo {
   public static var PageSize: Int {
-#if os(macOS)
     return Int(sysconf(_SC_PAGESIZE))
-#else
-    precondition(false, "Unable to query page size on this platform")
-#endif
   }
 }
 
