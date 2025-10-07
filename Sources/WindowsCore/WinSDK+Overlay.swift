@@ -621,6 +621,11 @@ public func HRESULT_FACILITY(_ hr: HRESULT) -> WORD {
 }
 
 @_transparent
+public func MAKEWORD(_ low: BYTE, _ high: BYTE) -> WORD {
+  return (WORD(high) << 8) | WORD(low) 
+}
+
+@_transparent
 public func MAKELANGID(_ primary: WORD, _ sub: WORD) -> DWORD {
   return DWORD((sub << 10) | primary)
 }
