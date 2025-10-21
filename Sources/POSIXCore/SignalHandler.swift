@@ -222,7 +222,6 @@ public struct SignalHandler {
     }
 
     deinit {
-#if swift(>=6.2)
       if #available(macOS 26, *) {
         Task<Void, Never>.immediate { [termination] in
           await termination()
@@ -232,11 +231,6 @@ public struct SignalHandler {
           await termination()
         }
       }
-#else
-      Task.detached(priority: .high) { [termination] in
-        await termination()
-      }
-#endif
     }
 
     /// Explicitly removes the signal handler.
@@ -249,7 +243,6 @@ public struct SignalHandler {
     ///   immediate execution. On older versions, falls back to
     ///   `Task.detached` with high priority.
     public consuming func remove() {
-#if swift(>=6.2)
       if #available(macOS 26, *) {
         Task<Void, Never>.immediate { [termination] in
           await termination()
@@ -259,11 +252,6 @@ public struct SignalHandler {
           await termination()
         }
       }
-#else
-      Task.detached(priority: .high) { [termination] in
-        await termination()
-      }
-#endif
     }
   }
 
