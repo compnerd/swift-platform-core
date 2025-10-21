@@ -1,10 +1,10 @@
-// swift-tools-version:6.1
+// swift-tools-version: 6.2
 
 import PackageDescription
 
 let _ = Package(name: "swift-platform-core",
                 platforms: [
-                  .macOS(.v15),
+                  .macOS(.v26),
                 ],
                 products: [
                   .library(name: "WindowsCore", targets: ["WindowsCore"]),
